@@ -15,15 +15,16 @@ namespace PreEntrega
             Usuario usu = new Usuario();
             using (SqlConnection como = new SqlConnection(conectar))
             {
-                SqlCommand comando = new SqlCommand($"select * from Usuario where id=2 ", como);
-
+                SqlCommand comando = new SqlCommand($"select * from Usuario where @id=2 ", como);
+                                                                               // cambiado los arroba id
                 comando.Parameters.AddWithValue("@id", id);
                 como.Open();
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    usu.id = reader.GetInt64(0);                  
+                    usu.id = reader.GetInt64(0);
+                    usu.nombre = reader.GetString(1);   // agregado lo del nombre
                 }
             }
             return usu;

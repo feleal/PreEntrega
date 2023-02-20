@@ -89,12 +89,12 @@ namespace PreEntrega
         {
             Producto producto = new Producto();
             using (SqlConnection como = new SqlConnection(conectar))
-            {
-                SqlCommand comando = new SqlCommand($"SELECT * FROM Producto WHERE id= ", como);
+            {                                                             // arreglado el parametro
+               // SqlCommand comando = new SqlCommand($"SELECT * FROM Producto WHERE id=@id ", como);
 
                 SqlCommand comando2 = new SqlCommand("select * from Producto where Id=@id",como);
 
-                comando.Parameters.AddWithValue("@id", id);
+                comando2.Parameters.AddWithValue("@id", id);
                 como.Open();
                 SqlDataReader reader = comando2.ExecuteReader();
                 if (reader.HasRows)
@@ -117,8 +117,8 @@ namespace PreEntrega
             //Producto producto = new Producto();
 
             using (SqlConnection como = new SqlConnection(conectar))
-            {
-                SqlCommand comando2 = new SqlCommand(" select IdProducto  from Venta\r\ninner join ProductoVendido\r\non Venta.Id=ProductoVendido.IdVenta\r\nwhere IdUsuario=IdUsuario", como);
+            {                                                                                                                                                            // corregido                         
+                SqlCommand comando2 = new SqlCommand(" select IdProducto  from Venta\r\ninner join ProductoVendido\r\non Venta.Id=ProductoVendido.IdVenta\r\nwhere IdUsuario=@IdUsuario", como);
 
                 comando2.Parameters.AddWithValue("@idusuario", idUsuario);
                 como.Open();

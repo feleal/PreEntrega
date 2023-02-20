@@ -28,7 +28,7 @@ using System;
 
 // traer producto... 3)
 
-//Producto p = ManejadorProducto.ObtenerProducto(1);
+Producto p = ManejadorProducto.ObtenerProducto(1);
 
 //List<Producto> productos = ManejadorProducto.ObtenerProductosVendidos(2);
 

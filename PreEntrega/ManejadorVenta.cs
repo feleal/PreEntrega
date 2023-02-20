@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace PreEntrega
 {
-    public static class ManejadorVenta
-    {
+    internal static class ManejadorVenta
+    { // cambiado lo del internal, no me di cuenta que estaba publico
         public static string conectar = "Data Source=FERNANDOLEAL;Initial Catalog=SistemaGestion;User ID=sa;Password=noanda;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False  ";
 
         public static List<Venta> ObtenerVentas(long idUsuario)
